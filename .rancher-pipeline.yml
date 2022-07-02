@@ -2,7 +2,7 @@ stages:
 - name: Maven编译
   steps:
   - runScriptConfig:
-      image:
+      image: rancher-demo:1.0
       shellScript: |-
         mvn clean package -DskipTests=true
 - name: 构建镜像
