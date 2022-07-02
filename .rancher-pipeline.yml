@@ -1,19 +1,2 @@
-stages:
-- name: Maven编译
-  steps:
-  - runScriptConfig:
-      image:
-      shellScript: |-
-        mvn clean package -DskipTests=true
-- name: 构建镜像
-  steps:
-  - publishImageConfig:
-      dockerfilePath: ./Dockerfile
-      buildContext: .
-      tag: rancher-demo:1.0
-- name: 部署
-  steps:
-  - applyYamlConfig:
-      path: ./deployment.yaml
 timeout: 60
 notification: {}
