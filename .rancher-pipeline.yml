@@ -3,8 +3,7 @@ stages:
   steps:
   - runScriptConfig:
       image: rancher-demo
-      shellScript: |-
-        mvn clean package -DskipTests=true
+      shellScript: mvn clean package -DskipTests=true
 - name: 构建镜像
   steps:
   - publishImageConfig:
