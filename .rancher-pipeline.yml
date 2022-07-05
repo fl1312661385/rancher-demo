@@ -19,7 +19,6 @@ stages:
       dockerfilePath: ./Dockerfile
       buildContext: .
       tag: rancher-demo:1.0
-      registry: 127.0.0.1:34649
 - name: 部署
   steps:
   - applyYamlConfig:

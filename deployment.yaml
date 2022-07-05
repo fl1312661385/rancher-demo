@@ -1,17 +1,24 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: rancher-demo
+  name: rancher-demo #改为自己服务名称
+  labels:
+    app: rancher-demo #改为自己服务名称
 spec:
   replicas: 1
+  selector:
+    matchLabels:
+      app: rancher-demo #改为自己服务名称
   template:
     metadata:
       labels:
-        app: rancher-demo
-        track: stable
+        app: rancher-demo #改为自己服务名称
     spec:
+      imagePullSecrets:
+        - name: private-repository
       containers:
-        - name: rancher-demo
-          image: rancher-demo:1.0
+        - name: rancher-demo        #pod的名称，必须字段，名称唯一且对象创建后不可以被修改
+          image: rancher-demo:1.0  #:镜像仓库的路径/镜像的名称:镜像的标签
+          IfNotPresent: Always  #Always(总是去仓库下载),Never(从不去仓库下载),IfNotPresent(如果本地没有就去仓库下载),默认是"IfNotPresent"
           ports:
-            - containerPort: 8080
+            - containerPort: 8090 #TODO:pod暴露的端口，此端口仅是额外的信息，对端口是否被暴露没有影响
