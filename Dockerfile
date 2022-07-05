@@ -1,4 +1,4 @@
-FROM Jdk:8
+FROM openjdk:8u292-jre
 
 COPY ./target/**.jar /app.jar
 
