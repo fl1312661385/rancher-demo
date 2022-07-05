@@ -2,7 +2,7 @@ stages:
 - name: Maven编译
   steps:
   - runScriptConfig:
-      image: rancher-demo
+      image: maven:3.8.1-jdk-8-slim
       shellScript: |-
         LOG_TAG="CHIP-INFO"
         MVN_SETTINGS_PATH="/root/.m2"
